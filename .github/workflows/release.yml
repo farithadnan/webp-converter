@@ -3,12 +3,11 @@ name: Build and Release
 on:
   push:
     tags:
-      - "v*"  # Triggers on versioned tags like v1.0.0
+      - "v*"  # Triggers only on versioned tags like v1.0.0
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,17 +25,6 @@ jobs:
 
       - name: Upload built package
         uses: actions/upload-artifact@v4
-        with:
-          name: webp-converter-package
-          path: dist/
-
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Download built package
-        uses: actions/download-artifact@v4
         with:
           name: webp-converter-package
           path: dist/
