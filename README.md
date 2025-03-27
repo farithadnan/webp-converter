@@ -26,11 +26,13 @@ cd webp-converter
 ```
 
 ### Manual Installation
+For normal development and usage, install the required dependencies with:  
 ```bash
 pip install -r requirements.txt
 ```
 
-### Installation using setuptools
+### Installation for Distribution
+If you want to package and distribute the script, use the command below. This will generate a distributable package using `setuptools`, creating `build` and `*.egg-info folders`:
 ```bash
 pip install .
 ```
