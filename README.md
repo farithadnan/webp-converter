@@ -10,16 +10,17 @@ This script recursively converts images in a specified folder to WebP format. It
 - Supports a dry-run mode to preview changes without modifying files.
 - Optionally deletes original images after conversion.
 - Logs operations to `logs/session.log` with timestamps.
+- Includes unit tests using `pytest`.
 
 ## Requirements
 - Python 3.10+
 - Pillow library
+- Pytest (For running test)
 
 ### Clone the repo
 ```bash
 git clone https://github.com/farithadnan/webp-converter.git
 ```
-
 
 ### Install Dependencies
 ```bash
@@ -56,6 +57,15 @@ Convert and delete original images:
 ```bash
 python main.py ./dataset --delete
 ```
+
+## Running Tests
+Unit tests are included and can be executed using `pytest`.
+
+### Run Tests
+```bash
+pytest
+```
+This will automatically discover and run all test files (`test_*.py` or `*_test.py`).
 
 ## Logging
 Logs are saved in `logs/session.log`. Each session is marked with a timestamp. Errors and conversions are recorded in the log file.
