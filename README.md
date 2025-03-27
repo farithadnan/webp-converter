@@ -15,21 +15,35 @@ This script recursively converts images in a specified folder to WebP format. It
 ## Requirements
 - Python 3.10+
 - Pillow library
-- Pytest (For running test)
+- Pytest (For running tests)
+
+## Installation
 
 ### Clone the repo
 ```bash
 git clone https://github.com/farithadnan/webp-converter.git
+cd webp-converter
 ```
 
-### Install Dependencies
+### Manual Installation
 ```bash
 pip install -r requirements.txt
 ```
 
+### Installation using setuptools
+```bash
+pip install .
+```
+
 ## Usage
+If you install the script manually, use this:
 ```bash
 python main.py <folder_path> [OPTIONS]
+```
+
+If you install the script using setuptools, use this:
+```bash
+webp-converter <folder_path> [OPTIONS]
 ```
 
 ### Arguments
@@ -45,27 +59,52 @@ python main.py <folder_path> [OPTIONS]
 ### Example Commands
 Convert images in `./images` while ignoring `backup` and `docs` folder:
 ```bash
+# Manual
 python main.py ./images --ignore backup docs
+# Setuptools
+webp-converter main.py ./images --ignore backup docs
 ```
 
 Perform a dry-run for `./photos` and only process `albums` and `images` folder:
 ```bash
+# Manual
 python main.py ./photos --allow albums images --dry-run
+# Setuptools
+webp-converter main.py ./photos --allow albums images --dry-run
 ```
 
 Convert and delete original images:
 ```bash
+# Manual
 python main.py ./dataset --delete
+# Setuptools
+webp-converter main.py ./dataset --delete
 ```
 
 ## Running Tests
 Unit tests are included and can be executed using `pytest`.
 
+### Install `pytest`
+```bash
+pip install pytest
+```
+
 ### Run Tests
 ```bash
-pytest
+pytest tests/
 ```
 This will automatically discover and run all test files (`test_*.py` or `*_test.py`).
+
+## Uninstalling Package Installed via setuptools
+If installed using `pip install .`, uninstall with:
+```bash
+pip uninstall webp-converter -y
+```
+
+To remove the package completely, delete the project folder:
+```bash
+rm -rf webp-converter
+```
 
 ## Logging
 Logs are saved in `logs/session.log`. Each session is marked with a timestamp. Errors and conversions are recorded in the log file.

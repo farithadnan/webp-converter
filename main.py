@@ -88,9 +88,8 @@ def convert_images_to_webp(folder, ignore_folders, allow_folders, delete_origina
     
     logging.info(f"=== Conversion Summary: {converted} converted, {skipped} skipped ===")
 
-
-
-if __name__ == "__main__":
+def main():
+    """Entry point for CLI execution."""
     try:
         parser = argparse.ArgumentParser(description="Convert images to WebP format recursively.")
         parser.add_argument("folder", type=Path, help="Root folder to scan for images")
@@ -108,3 +107,5 @@ if __name__ == "__main__":
     except Exception:
         logging.exception("An unexpected error occurred")
 
+if __name__ == "__main__":
+    main()
