@@ -19,34 +19,45 @@ This script recursively converts images in a specified folder to WebP format. It
 
 ## Installation
 
-### Clone the repo
-```bash
-git clone https://github.com/farithadnan/webp-converter.git
-cd webp-converter
-```
-
-### Manual Installation
-For normal development and usage, install the required dependencies with:  
+### Development Setup (Using `requirements.txt`)
+For development and testing, install the required dependencies using:
 ```bash
 pip install -r requirements.txt
 ```
+This allows you to modify and run the script directly.
 
-### Installation for Distribution
-If you want to package and distribute the script, use the command below. This will generate a distributable package using `setuptools`, creating `build` and `*.egg-info folders`:
-```bash
-pip install .
-```
-
-## Usage
-If you install the script manually, use this:
+Run the script manually:
 ```bash
 python main.py <folder_path> [OPTIONS]
 ```
 
-If you install the script using setuptools, use this:
+### Distribution Setup (Using `setuptools` and `build`)
+To package and distribute the script, follow these steps:
+
+1. Install `setuptools` and `build`:
+```bash
+pip install setuptools build
+```
+
+2. Build the distributable package:
+```bash
+python -m build
+```
+This will generate the following files inside the `dist/` folder:
+- `webp_converter-<version>-py3-none-any.whl`
+- `webp_converter-<version>.tar.gz`
+
+3. Install the package locally for testing:
+```bash
+pip install dist/webp_converter-<version>-py3-none-any.whl
+```
+
+4. Run the installed CLI tool:
 ```bash
 webp-converter <folder_path> [OPTIONS]
 ```
+
+## Usage
 
 ### Arguments
 - `<folder_path>`: The root folder to scan for images.
@@ -61,26 +72,17 @@ webp-converter <folder_path> [OPTIONS]
 ### Example Commands
 Convert images in `./images` while ignoring `backup` and `docs` folder:
 ```bash
-# Manual
-python main.py ./images --ignore backup docs
-# Setuptools
-webp-converter main.py ./images --ignore backup docs
+webp-converter ./images --ignore backup docs
 ```
 
 Perform a dry-run for `./photos` and only process `albums` and `images` folder:
 ```bash
-# Manual
-python main.py ./photos --allow albums images --dry-run
-# Setuptools
-webp-converter main.py ./photos --allow albums images --dry-run
+webp-converter ./photos --allow albums images --dry-run
 ```
 
 Convert and delete original images:
 ```bash
-# Manual
-python main.py ./dataset --delete
-# Setuptools
-webp-converter main.py ./dataset --delete
+webp-converter ./dataset --delete
 ```
 
 ## Running Tests
@@ -97,12 +99,11 @@ pytest tests/
 ```
 This will automatically discover and run all test files (`test_*.py` or `*_test.py`).
 
-## Uninstalling Package Installed via setuptools
+## Uninstalling the Package
 If installed using `pip install .`, uninstall with:
 ```bash
 pip uninstall webp-converter -y
 ```
-
 To remove the package completely, delete the project folder:
 ```bash
 rm -rf webp-converter
@@ -118,3 +119,4 @@ Logs are saved in `logs/session.log`. Each session is marked with a timestamp. E
 
 ## License
 This project is open-source and free to use under the [MIT License](LICENSE.md).
+
