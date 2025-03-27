@@ -1,6 +1,5 @@
 # WebP Image Converter
 
-## Overview
 This script recursively converts images in a specified folder to WebP format. It supports filtering specific folders, skipping certain directories, and optionally deleting the original images after conversion. The script also logs all activities to a log file.
 
 ## Features
@@ -18,6 +17,19 @@ This script recursively converts images in a specified folder to WebP format. It
 - Pytest (For running tests)
 
 ## Installation
+
+### Using Prebuilt Package (Recommended)
+Download the latest .whl file from the [Releases section](https://github.com/farithadnan/webp-converter/releases) and install it using:
+```bash
+pip install path/to/webp_converter-<version>-py3-none-any.whl
+```
+
+After installation, you can use the CLI:
+
+```bash
+webp-converter <folder_path> [OPTIONS]
+```
+Refer to the **Usage** section for more details.
 
 ### Development Setup (Using `requirements.txt`)
 For development and testing, install the required dependencies using:
