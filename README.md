@@ -15,6 +15,12 @@ This script recursively converts images in a specified folder to WebP format. It
 - Python 3.10+
 - Pillow library
 
+### Clone the repo
+```bash
+git clone https://github.com/farithadnan/webp-converter.git
+```
+
+
 ### Install Dependencies
 ```bash
 pip install -r requirements.txt
