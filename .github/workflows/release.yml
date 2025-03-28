@@ -39,4 +39,4 @@ jobs:
           tag_name: ${{ github.ref_name }}
           body: "Automated release for version ${{ github.ref_name }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
