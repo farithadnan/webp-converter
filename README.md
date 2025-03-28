@@ -32,7 +32,7 @@ webp-converter <folder_path> [OPTIONS]
 Refer to the **Usage** section for more details.
 
 ### Development Setup (Using `requirements.txt`)
-For development and testing, install the required dependencies using:
+For development and testing, create your `virtual env`, activate it and then install the required dependencies using:
 ```bash
 pip install -r requirements.txt
 ```
@@ -44,14 +44,19 @@ python main.py <folder_path> [OPTIONS]
 ```
 
 ### Distribution Setup (Using `setuptools` and `build`)
-To package and distribute the script, follow these steps:
+To package and distribute the script, activate your `virtual env` and then follow these steps:
 
 1. Install `setuptools` and `build`:
 ```bash
 pip install setuptools build
 ```
 
-2. Build the distributable package:
+2. Build the dependencies first, go to the root folder and run this command:
+```bash
+pip install .
+```
+
+3. Build the distributable package:
 ```bash
 python -m build
 ```
@@ -59,12 +64,12 @@ This will generate the following files inside the `dist/` folder:
 - `webp_converter-<version>-py3-none-any.whl`
 - `webp_converter-<version>.tar.gz`
 
-3. Install the package locally for testing:
+4. Install the package locally for testing:
 ```bash
 pip install dist/webp_converter-<version>-py3-none-any.whl
 ```
 
-4. Run the installed CLI tool:
+5. Run the installed CLI tool:
 ```bash
 webp-converter <folder_path> [OPTIONS]
 ```
@@ -75,8 +80,11 @@ webp-converter <folder_path> [OPTIONS]
 - `<folder_path>`: The root folder to scan for images.
 
 ### Options
-- `--ignore <folders>`: Space-separated list of folders to ignore.
-- `--allow <folders>`: Space-separated list of folders to process. If omitted, all folders are processed.
+- `--ignore <folders path>`: Space-separated list of folders to ignore.
+- `--allow <folders path>`: Space-separated list of folders to process. If omitted, all folders are processed.
+- `--quality <number>`: Set WebP quality. (1-100, lower = smaller file).
+- `--method <number>`: Compression method (0=fastest, 6=best).
+- `--resize <width><height>`: Compression method (0=fastest, 6=best).
 - `--delete`: Deletes original images after conversion.
 - `--dry-run`: Simulates the process without making changes.
 - `--debug`: Enables debug logging.
@@ -85,6 +93,11 @@ webp-converter <folder_path> [OPTIONS]
 Convert images in `./images` while ignoring `backup` and `docs` folder:
 ```bash
 webp-converter ./images --ignore backup docs
+```
+
+Compress images in `./images`
+```bash
+webp-converter ./images --quality 50 --method 5 --resize 1920 1080
 ```
 
 Perform a dry-run for `./photos` and only process `albums` and `images` folder:
